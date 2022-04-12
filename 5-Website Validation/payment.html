@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,45 +8,47 @@
     <link rel="stylesheet" href="./styles.css">
     <title>Payment portal</title>
 </head>
+
 <body>
     <h1>Enjoy the shopping with special offers</h1>
-    <form action="">
-            <p>Payment through</p>
-            <input type="radio" id="credit" name="method" value="credit" checked>
-            <label for="credit">Credit card</label>
-            <input type="radio" id="debit" name="method" value="debit">
-            <label for="debit">Debit card</label>
-            <br>
-            <label for="bank">Bank</label>
-            <select name="bank" id="bank">
-                <option value="sbi">State Bank of India</option>
-                <option value="pnb">Punjab National Bank</option>
-                <option value="canara">Canara Bank</option>
-            </select>
-            <br>
-            <label for="acc">Account or Card number</label>
-            <input type="text" name="acc" id="acc">
-            <br>
-            <label for="pass">Password/NetBanking id</label>
-            <input type="password" id="pass" name="pass">
-            <br>
-            <label for="exp">Enter the date of expiry of account/card</label>
-            <br>
-            <label for="dd" >(dd)</label>
-            <input type="text" id="dd" size="20">
-            <label for="mm">(mm)</label>
-            <input type="text" id="mm" size="20">
-            <label for="yy">(yy)</label>
-            <input type="text" id="yy" size="20">
-            <br>
-            <input type="submit" value="Accept">
-            <input type="submit" value="Reject">
-            
+    <form action="status.html" onsubmit="return paymentValidation();">
+        <p>Payment through</p>
+        <input type="radio" id="credit" name="method" value="credit" checked>
+        <label for="credit">Credit card</label>
+        <input type="radio" id="debit" name="method" value="debit">
+        <label for="debit">Debit card</label>
+        <br>
+        <label for="bank">Bank</label>
+        <select name="bank" id="bank">
+            <option value="sbi">State Bank of India</option>
+            <option value="pnb">Punjab National Bank</option>
+            <option value="canara">Canara Bank</option>
+        </select>
+        <br>
+        <label for="acc">Card number</label>
+        <input type="text" name="acc" id="acc">
+        <br>
+        <label for="pass">Password</label>
+        <input type="password" id="pass" name="pass">
+        <br>
+        <label for="exp">Enter the date of expiry of account/card</label>
+        <br>
+        <label for="dd">(dd)</label>
+        <input type="text" id="dd" size="20">
+        <label for="mm">(mm)</label>
+        <input type="text" id="mm" size="20">
+        <label for="yy">(yy)</label>
+        <input type="text" id="yy" size="20">
+        <br>
+        <input type="submit" value="Accept">
+        <input type="submit" value="Reject">
+
     </form>
     <footer>
         <a href="./index.html">Home</a>
         <a href="./userlogin.html">Back</a>
     </footer>
-    
+
 </body>
+
 </html>

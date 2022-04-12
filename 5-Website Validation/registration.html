@@ -7,58 +7,58 @@
     <link rel="stylesheet" href="./styles.css">
     <title>Registration</title>
 </head>
-<body>
+<body onload="captchaGenerator();">
     <h1>Registration Form</h1>
-    <form action="userlogin.html" onsubmit="storeDetails()" >
+    <form id="regis" action="userlogin.html" onsubmit="return formValidate();" >
         <table>
         <tr>
-            <td><label for="name">Name</label></td>
-            <td><input type="text" id="name" pattern="[A-Za-z]{3,20}[ A-Za-z]*"></td>
+            <td><label for="uname">Name</label><span class="req">(*)</span></td>
+            <td><input type="text" id="uname" required></td>
             <td><br></td>
         </tr>
 
         <tr>
-            <td><label for="age">Age</label></td>
-            <td><input type="date" id="age"></td>
+            <td><label for="age">Age</label><span class="req">(*)</span></td>
+            <td><input type="date" id="age" required></td>
             <td><br></td>
         </tr>
 
         <tr>
-            <td>Sex</td>
+            <td>Sex<span class="req">(*)</span></td>
             <td><label for="male">Male</label>
-            <input type="radio" id="male" name="gender" value="male">
+            <input type="radio" id="male" name="gender" value="male" checked required>
             <label for="female">Female</label>
             <input type="radio" id="female" name="gender" value="female"></td>
             <td><br></td>
         </tr>
 
         <tr>
-            <td><label for="address">Address</label></td>
-            <td><textarea name="address" id="address" cols="45" rows="12"></textarea></td>
+            <td><label for="address">Address</label><span class="req">(*)</span></td>
+            <td><textarea name="address" id="address" cols="45" rows="12" required></textarea></td>
             <td><br></td>
         </tr>
 
         <tr>
-            <td><label for="email">Email Address</label></td>
-            <td><input type="email" id="email"></td>
+            <td><label for="email">Email Address</label><span class="req" >(*)</span></td>
+            <td><input type="email" id="email"" required></td>
             <td><br></td>
         </tr>
 
         <tr>
             <td><label for="aemail">Alternate Email Address</label></td>
-            <td><input type="email" id="aemail"></td>
+            <td><input type="email" id="aemail""></td>
             <td><br></td>
         </tr>
 
         <tr>
-            <td><label for="password">Password</label></td>
-            <td><input type="password" id="password"></td>
+            <td><label for="password">Password</label><span class="req">(*)</span></td>
+            <td><input type="password" id="password"" required></td>
             <td><br></td>
         </tr>
 
         <tr>
-            <td><label for="cpass">Confirm Password</label></td>
-            <td><input type="password" id="cpass"></td>
+            <td><label for="cpass">Confirm Password</label><span class="req">(*)</span></td>
+            <td><input type="password" id="cpass"  required></td>
             <td><br></td>
         </tr>
 
@@ -89,16 +89,18 @@
         </tr>
 
         <tr>
-            <td><label for="code">Enter the code</label></td>
+            <td><label for="code">Enter the code</label><span class="req">(*)</span></td>
             <td><input type="text" id="code"></td>
         </tr>
 
         <tr>
-            <td><p id="captcha" data-unselectable="7328"></p></td>
+            <td><p id="captcha"></p></td>
+            <td><img id="refresh" onclick="captchaGenerator()" src="img/refreshIcon.png" width="50px" height="50px" alt="refresh button"></td>
             <td><br></td>
         </tr>
         
         <tr>
+            <td></td>
             <td><input type="submit"><input type="reset"></td>
         </tr>
         </table>
