@@ -52,7 +52,8 @@ input[type=text], input[type=email], input[type=password], input[type=age]
 input[type=submit], input[type=reset]
 {
     width:80px;
-    height:30px;
+    height:40px;
+    margin-top: 50px;
     margin-right:10px;
     font-weight:bold;
 }
@@ -75,10 +76,6 @@ footer
 {
     color:green;
 }
-#captcha::before 
-{
-    content: attr(data-unselectable);
-}
 #captcha
 {
     user-select: none;
@@ -90,10 +87,9 @@ footer
 }
 #dd,#mm,#yy
 {
-    width: 20px;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
+    width: 50px;
+    height: 40px;
+    box-sizing:content-box;
 }
 #refresh
 {

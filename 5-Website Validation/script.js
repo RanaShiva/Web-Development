@@ -87,5 +87,42 @@ function captchaGenerator()
 
 function paymentValidation()
 {
-    
+    if(document.getElementById("acc").value.length!=16)
+    {
+        alert("Length should be 16. Invalid!");
+        return false;
+    }
+    let cdate = new Date().getDate();
+    let cmonth = new Date().getMonth()+1;
+    let cyear = new Date().getFullYear();
+    let date = document.getElementById("dd").value;
+    let month = document.getElementById("mm").value;
+    let year = document.getElementById("yy").value;
+
+    console.log("in");
+    if(cyear%100 >= year)
+    {
+        if(cmonth >= month)
+        {
+            if(cdate >= date)
+            {
+                return true;
+            }
+            else
+            {
+                alert("Card has expired!");
+                return false;
+            }
+        }
+        else
+        {
+            alert("Card has expired!");
+            return false;
+        }
+    }
+    else
+    {
+        alert("Card has expired!");
+        return false;
+    }
 }

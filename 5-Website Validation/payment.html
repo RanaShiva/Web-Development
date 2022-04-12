@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
+
     <title>Payment portal</title>
 </head>
 
@@ -26,22 +27,21 @@
         </select>
         <br>
         <label for="acc">Card number</label>
-        <input type="text" name="acc" id="acc">
+        <input type="text" name="acc" id="acc" required>
         <br>
         <label for="pass">Password</label>
-        <input type="password" id="pass" name="pass">
+        <input type="password" id="pass" name="pass" required>
         <br>
         <label for="exp">Enter the date of expiry of account/card</label>
         <br>
         <label for="dd">(dd)</label>
-        <input type="text" id="dd" size="20">
+        <input type="number"id="dd" min="1" max="31" required>
         <label for="mm">(mm)</label>
-        <input type="text" id="mm" size="20">
+        <input type="number" id="mm" min="1" max="12" required>
         <label for="yy">(yy)</label>
-        <input type="text" id="yy" size="20">
+        <input type="number" id="yy" min="00" max="99" required>
         <br>
-        <input type="submit" value="Accept">
-        <input type="submit" value="Reject">
+        <input type="submit" value="Pay">
 
     </form>
     <footer>
@@ -50,5 +50,6 @@
     </footer>
 
 </body>
+<script src="script.js"></script>
 
 </html>
