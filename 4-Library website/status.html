@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="message()">
+    <p>Transaction processed!</p>
+    <p>Redirecting to homepage in <span id="sec">10</span>s.</p>
+    <p><a href="./index.html">Click here</a> to go to homepage</p>
+</body>
+<script>
+    function message()
+    {
+        let num=9;
+        setInterval(function()
+        {
+            document.getElementById("sec").innerHTML = num--;
+        },1000)
+
+        setTimeout(function()
+        {
+            location.href = "./index.html";
+        }, 10000);
+    }
+</script>
+</html>

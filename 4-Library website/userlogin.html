@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>User login</title>
-<link href="styles.css" rel="stylesheet">
+    <title>User login</title>
+    <link href="styles.css" rel="stylesheet">
 </head>
+
 <body>
-<h1>User login</h1>
-<label for="username">Username:</label></br>
-<input type="text" id="uname">
-</br>
-<label for="pass">Password:</label></br>
-<input type="password" id="pass">
-</br>
-<input type="submit" value="Submit">
+    <form action="profile.html" onsubmit="return checkDetails();">
+        <h1>User login</h1>
+        <label for="username">Username:</label></br>
+        <input type="text" id="uname">
+        </br>
+        <label for="pass">Password:</label></br>
+        <input type="password" id="pass">
+        </br>
+        <input type="submit" value="Submit">
+    </form>
 </body>
+<script>
+    function checkDetails()
+    {
+        let uname = document.getElementById("uname").value;
+        let pass = document.getElementById("pass").value;
+        if(uname == sessionStorage.getItem("uname") && pass == sessionStorage.getItem("pass"))
+        {
+            alert("User logged in!");
+        }
+        else
+        {
+            alert("Invalid Credentials!");
+            return false;
+        }
+    }
+</script>
+
 </html>

@@ -1,60 +1,92 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Book catalog</title>
-<link href="styles.css" rel="stylesheet">
+    <title>Book catalog</title>
+    <link href="styles.css" rel="stylesheet">
 </head>
+
 <body>
-<h1>Book catalog</h1>
-<table>
-<tr>
-<td><img src="img/javaRefrences.jpg" height="100px" width="70px"></td>
-<td><h2>Java Complete refrences</h2>
-<ul>
-<li>Author: Gangadhar</li>
-<li>Edition: 2007</li>
-<li>Price: 450</li>
-<li>Publisher: Ideal Publishers</li>
-</ul>
-</td>
-<td><a href="#">add to cart</a></td>
-</tr>
-<tr>
-<td><img src="img/compilerDesign.png" height="100px" width="70px"></td>
-<td><h2>Compiler Design</h2>
-<ul>
-<li>Author: Gangadhar</li>
-<li>Edition: 2007</li>
-<li>Price: 450</li>
-<li>Publisher: Ideal Publishers</li>
-</ul>
-</td>
-<td><a href="#">add to cart</a></td>
-</tr>
-<tr>
-<td><img src="img/visualBasics.jpg" height="100px" width="70px"></td>
-<td><h2>Visual Basics</h2>
-<ul>
-<li>Author: Gangadhar</li>
-<li>Edition: 2007</li>
-<li>Price: 450</li>
-<li>Publisher: Ideal Publishers</li>
-</ul>
-</td>
-<td><a href="#">add to cart</a></td>
-</tr>
-<tr>
-<td><img src="img/webTechnologyAndDesign.jpg" height="100px" width="70px"></td>
-<td><h2>Web Technologies and Design</h2>
-<ul>
-<li>Author: Gangadhar</li>
-<li>Edition: 2007</li>
-<li>Price: 450</li>
-<li>Publisher: Ideal Publishers</li>
-</ul>
-</td>
-<td><a href="#">add to cart</a></td>
-</tr>
-</table>
+    <h1>Book catalog</h1>
+    <table>
+        <tr>
+            <td><img src="img/javaRefrences.jpg" height="100px" width="70px"></td>
+            <td>
+                <h2>Java Complete References</h2>
+                <ul>
+                    <li>Author: Gangadhar</li>
+                    <li>Edition: 2007</li>
+                    <li>Price: 450</li>
+                    <li>Publisher: Ideal Publishers</li>
+                </ul>
+            </td>
+            <td><a href="#" id="java" onclick="addToCart(this);">add to cart</a></td>
+        </tr>
+        <tr>
+            <td><img src="img/compilerDesign.png" height="100px" width="70px"></td>
+            <td>
+                <h2>Compiler Design</h2>
+                <ul>
+                    <li>Author: Alfred, Monica, Ravi, Jefrey</li>
+                    <li>Edition: 2013</li>
+                    <li>Price: 600</li>
+                    <li>Publisher: Pearson</li>
+                </ul>
+            </td>
+            <td><a href="#" id="compiler" onclick="addToCart(this);">add to cart</a></td>
+        </tr>
+        <tr>
+            <td><img src="img/visualBasics.jpg" height="100px" width="70px"></td>
+            <td>
+                <h2>Visual Basics</h2>
+                <ul>
+                    <li>Author: Prateek, Ranjeet, Sanjeev, Ravneet</li>
+                    <li>Edition: 2014</li>
+                    <li>Price: 550</li>
+                    <li>Publisher: Kalyani</li>
+                </ul>
+            </td>
+            <td><a href="#" id="visual" onclick="addToCart(this);">add to cart</a></td>
+        </tr>
+        <tr>
+            <td><img src="img/webTechnologyAndDesign.jpg" height="100px" width="70px"></td>
+            <td>
+                <h2>Web Technologies and Design</h2>
+                <ul>
+                    <li>Author: C Xavier</li>
+                    <li>Edition: 2019</li>
+                    <li>Price: 700</li>
+                    <li>Publisher: New Age International Publishers</li>
+                </ul>
+            </td>
+            <td><a href="#" id="web" onclick="addToCart(this);">add to cart</a></td>
+        </tr>
+    </table>
+    <form onsubmit="storeDetails();" action="./bookscart.html">
+        <button type="submit" >Go to Cart</button>
+    </form>
 </body>
+<script>
+    let entry = [];
+
+    function addToCart(element) {
+        if (element.id == "java") {
+            entry.push(["Java References", 450, "Ideal Publishers"]);
+        }
+        if (element.id == "compiler") {
+            entry.push(["Compiler Design", 600, "Pearson"]);
+        }
+        if (element.id == "visual") {
+            entry.push(["Visual Basics", 550, "Kalyani"]);
+        }
+        if (element.id == "web") {
+            entry.push(["Web Technologies and Design", 700, "New Age International Publishers"]);
+        }
+    }
+
+    function storeDetails() {
+        sessionStorage.setItem("entry", JSON.stringify(entry));
+    }
+</script>
+
 </html>

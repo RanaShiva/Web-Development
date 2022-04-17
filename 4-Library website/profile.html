@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>User profile</title>
+</head>
+
+<body onload="showDetails();">
+    <h1>User details</h1>
+    <fieldset>
+        <legend>User profile</legend>
+        <table>
+            <tr>
+                <td>User Name</td>
+                <td id="uname"></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td id="name"></td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td id="age"></td>
+            </tr>
+            <tr>
+                <td>Email ID</td>
+                <td id="email"></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td id="phone"></td>
+            </tr>
+            <tr>
+                <td>Occupation</td>
+                <td id="occup"></td>
+            </tr>
+        </table>
+    </fieldset>
+    <button><a href="./catalog.html"> Go to books Catalog</a></button>
+</body>
+<script>
+    function showDetails()
+    {
+        document.getElementById("uname").innerHTML = sessionStorage.getItem("uname");
+
+        document.getElementById("name").innerHTML = sessionStorage.getItem("name");
+
+        document.getElementById("age").innerHTML = sessionStorage.getItem("age");
+
+        document.getElementById("email").innerHTML = sessionStorage.getItem("email");
+
+        document.getElementById("phone").innerHTML = sessionStorage.getItem("phone");
+
+        document.getElementById("occup").innerHTML = sessionStorage.getItem("occup");
+    }
+</script>
+
+</html>

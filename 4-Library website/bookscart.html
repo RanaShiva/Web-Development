@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Books Cart</title>
+    <style>
+        table,
+        tr,
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body onload="loadDetails();">
+    <h1>Shopping Cart</h1>
+    <table id="cart">
+        <tr>
+            <th>Name of the book</th>
+            <th>Publisher</th>
+            <th>Price</th>
+        </tr>
+
+        <tr>
+            <th>Quantity</th>
+            <th></th>
+            <th>Total</th>
+        </tr>
+        <tr>
+            <td id="quantity"></td>
+            <td></td>
+            <td id="total"></td>
+        </tr>
+        <tr>
+            <td><button><a href="./catalog.html"> Back </a></button></td>
+            <td></td>
+            <td>
+                <form action="./payment.html" onsubmit="storeAmount();">
+                    <button type="submit">Pay</button>
+                </form>
+            </td>
+            
+            
+        </tr>
+    </table>
+</body>
+<script>
+    function loadDetails() {
+        let totalPrice = 0;
+        let entry = JSON.parse(sessionStorage.getItem("entry"));
+        let cart = document.getElementById("cart");
+        let row;
+        for (let i = 0; i < entry.length; i++) {
+            totalPrice += entry[i][1];
+            row = cart.insertRow(i + 1);
+            row.insertCell().innerHTML = entry[i][0];
+            row.insertCell().innerHTML = entry[i][2];
+            row.insertCell().innerHTML = entry[i][1];
+        }
+        document.getElementById("quantity").innerHTML = entry.length;
+        document.getElementById("total").innerHTML = totalPrice;
+    }
+    function storeAmount()
+    {
+        sessionStorage.setItem("amount",document.getElementById("total").innerHTML);
+    }
+
+</script>
+
+</html>

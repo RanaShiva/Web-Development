@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+
+    <title>Payment portal</title>
+</head>
+
+<body onload="loadAmount();">
+    <h1>Payment Page</h1>
+    <form action="status.html" onsubmit="return paymentValidation();">
+        <p>Payment through</p>
+        <input type="radio" id="credit" name="method" value="credit" checked>
+        <label for="credit">Credit card</label>
+        <input type="radio" id="debit" name="method" value="debit">
+        <label for="debit">Debit card</label>
+        <br>
+        <label for="bank">Bank</label>
+        <select name="bank" id="bank">
+            <option value="sbi">State Bank of India</option>
+            <option value="pnb">Punjab National Bank</option>
+            <option value="canara">Canara Bank</option>
+        </select>
+        <br>
+        <label for="acc">Card number</label>
+        <input type="text" name="acc" id="acc" required>
+        <br>
+        <label for="exp">Enter the date of expiry of account/card</label>
+        <br>
+        <label for="dd">(dd)</label>
+        <input type="number" id="dd" min="1" max="31" required>
+        <label for="mm">(mm)</label>
+        <input type="number" id="mm" min="1" max="12" required>
+        <label for="yy">(yy)</label>
+        <input type="number" id="yy" min="00" max="99" required>
+        <br>
+        <label for="amount">Amount to pay:</label>
+        <input type="text" id="amount" disabled>
+        <br>
+        <input type="submit" value="Pay">
+        <button type="button"><a style="text-decoration:none;color:black;" href="#">Back</a></button>
+
+    </form>
+
+</body>
+<script>
+    function paymentValidation() {
+        if (document.getElementById("acc").value.length != 16) 
+        {
+            alert("Length should be 16. Invalid!");
+            return false;
+        }
+        let cdate = new Date().getDate();
+        let cmonth = new Date().getMonth() + 1;
+        let cyear = new Date().getFullYear();
+        let date = document.getElementById("dd").value;
+        let month = document.getElementById("mm").value;
+        let year = document.getElementById("yy").value;
+        if (cyear % 100 < year) 
+        {
+            return true
+        } 
+        else if (cyear % 100 > year) 
+        {
+            alert("Card has Expired!");
+            return false;
+        } 
+        else 
+        {
+            if (cmonth < month) {
+                return true;
+            } else if (cmonth > month) {
+                alert("Card has Expired!");
+                return false;
+            } 
+            else {
+                if (cdate < date) {
+                    return true;
+                } 
+                else if (cdate >= date) {
+                    alert("Card has Expired!");
+                    return false;
+                }
+            }
+        }
+    }
+
+        function loadAmount() {
+            document.getElementById("amount").value = sessionStorage.getItem("amount");
+        }
+</script>
+
+</html>

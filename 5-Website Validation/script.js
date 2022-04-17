@@ -100,29 +100,37 @@ function paymentValidation()
     let year = document.getElementById("yy").value;
 
     console.log("in");
-    if(cyear%100 >= year)
+    if (cyear % 100 < year) {
+        return true
+    }
+    else if(cyear%100>year)
     {
-        if(cmonth >= month)
-        {
-            if(cdate >= date)
-            {
-                return true;
-            }
-            else
-            {
-                alert("Card has expired!");
-                return false;
-            }
-        }
-        else
-        {
-            alert("Card has expired!");
-            return false;
-        }
+        alert("Card has Expired!");
+        return false;
     }
     else
     {
-        alert("Card has expired!");
-        return false;
+        if(cmonth < month)
+        {
+            return true;
+        }
+        else if(cmonth > month)
+        {
+            alert("Card has Expired!");
+            return false;
+        }
+        else
+        {
+            if(cdate < date)
+            {
+                return true;
+            }
+            else if(cdate>=date)
+            {
+                alert("Card has Expired!");
+                return false;
+            }
+        }
     }
+
 }

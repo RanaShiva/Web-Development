@@ -1,51 +1,130 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Registration Form</title>
-<link href="styles.css" rel="stylesheet">
+    <title>Registration Form</title>
+    <link href="styles.css" rel="stylesheet">
 </head>
+
 <body>
-<h1>Registration form</h1>
-<form action="" id="regis">
-<fieldset>
-<legend>Registration form</legend></br>
-<label for="fname">First Name:</label></br>
-<input type="text" id="fname" required>
-</br>
-<label for="lname">Last Name:</label></br>
-<input type="text" id="lname" required>
-</br>
-<label for="age">Age:</label></br>
-<input type="number" id="age" min="13" max="100" required>
-</br>
-<label for="email">Email id:</label></br>
-<input type="email" id="email" required>
-</br>
-<label for="aemail">Alternate Email id:</label></br>
-<input type="email" id="aemail">
-</br>
-<label for="address">Address:</label></br>
-<textarea form="regis" id="address" rows="10" cols="100" required></textarea>
-</br>
-<label for="phone">Phone:</label></br>
-<input type="tel" id="phone" pattern="[0-9]{2}+[0-9]{10}" required>
-</br>
-<label for="occup">Occupation:</label></br>
-<input type="text" id="occup">
-</br>
-<label for="uname">Username:</label></br>
-<input type="text" id="uname" required>
-</br>
-<label for="pass">Enter password:</label></br>
-<input type="password" id="pass" required>
-</br>
-<input type="radio" name="terms" value="agree" id="agree" required>
-<label for="agree">I agree to the terms and conditions:</label>
-<input type="radio" name="terms" value="disagree" id="disagree">
-<label for="disagree">I disagree:</label></br>
-<input type="submit" value="Submit">
-<input type="reset">
-</fieldset>
-</form>
+    <h1>Registration form</h1>
+    <form action="userlogin.html" id="regis" onsubmit="return validate();">
+        <fieldset>
+            <legend>Registration form</legend></br>
+            <label for="fname">First Name:</label></br>
+            <input type="text" id="fname" required>
+            </br>
+
+            <label for="lname">Last Name:</label></br>
+            <input type="text" id="lname" required>
+            </br>
+
+            <label for="age">Age:</label></br>
+            <input type="number" id="age" min="13" max="100" required>
+            </br>
+
+            <label for="email">Email id:</label></br>
+            <input type="email" id="email" required>
+            </br>
+
+            <label for="aemail">Alternate Email id:</label></br>
+            <input type="email" id="aemail">
+            </br>
+
+            <label for="address">Address:</label></br>
+            <textarea form="regis" id="address" rows="10" cols="100"></textarea>
+            </br>
+
+            <label for="phone">Phone:</label></br>
+            <input type="tel" id="phone" required>
+            </br>
+
+            <label for="occup">Occupation:</label></br>
+            <input type="text" id="occup" required>
+            </br>
+
+            <label for="uname">Username:</label></br>
+            <input type="text" id="uname" required>
+            </br>
+
+            <label for="pass">Enter password:</label></br>
+            <input type="password" id="pass" required>
+            </br>
+
+            <input type="radio" name="terms" value="agree" id="agree" required>
+            <label for="agree">I agree to the terms and conditions:</label>
+            <input type="radio" name="terms" value="disagree" id="disagree">
+            <label for="disagree">I disagree:</label></br>
+
+            <input type="submit" value="Submit">
+            <input type="reset">
+        </fieldset>
+    </form>
 </body>
+<script>
+    function storeDetails() {
+        //username password name age emailid phone occupation
+        let uname = document.getElementById("uname").value;
+        sessionStorage.setItem("uname", uname);
+
+        let pass = document.getElementById("pass").value;
+        sessionStorage.setItem("pass", pass);
+
+        let name = document.getElementById("fname").value + " " + document.getElementById("lname").value;
+        sessionStorage.setItem("name", name);
+
+        let age = document.getElementById("age").value;
+        sessionStorage.setItem("age", age);
+
+        let email = document.getElementById("email").value;
+        sessionStorage.setItem("email", email);
+
+        let phone = document.getElementById("phone").value;
+        sessionStorage.setItem("phone", phone);
+
+        let occup = document.getElementById("occup").value;
+        sessionStorage.setItem("occup", occup);
+    }
+
+    function validate() {
+        //Email validation
+        let emailPattern = /[A-Za-z0-9._+-]+@[A-Za-z0-9._]/;
+        if (document.getElementById("email").value.match(emailPattern) == null) {
+            alert("Invalid Email Address");
+            return false;
+        }
+        if (document.getElementById("aemail").value.match(emailPattern) == null && document.getElementById("aemail")
+            .value != "") {
+            alert("Invalid Email Alternate Address");
+            return false;
+        }
+
+        //telephone validation
+        let telPattern = /[0-9]{10,13}/;
+        if (document.getElementById("phone").value.match(telPattern) == null) {
+            console.log(document.getElementById("phone").value.match(telPattern));
+            alert("Invalid Phone Number");
+            return false;
+        }
+
+        //Password Validation
+        let pass = document.getElementById("pass").value;
+        let passwordPattern = /[A-Z]+[a-z]+[0-9]/g;
+        if (pass.match(passwordPattern) == null && pass.length < 8) {
+            alert(
+                "Invalid Password. Must contain one uppercase, one lowercase, one number and should be 8 digits long.");
+            return false;
+        }
+
+        //T&C validation
+        let agree = document.getElementById("agree");
+        if (!agree.checked) {
+            alert("Agree to the terms and conditions");
+            return false;
+        }
+        storeDetails();
+
+    }
+</script>
+
 </html>
